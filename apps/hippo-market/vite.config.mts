@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import * as path from 'path';
+import path from 'path';
 
 export default defineConfig({
   server: {
@@ -20,7 +20,8 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/styles/foundation/_variables.scss";`,
+        api: 'modern-compiler',
+        additionalData: `@import "@/styles/global.scss";`,
       },
     },
   },

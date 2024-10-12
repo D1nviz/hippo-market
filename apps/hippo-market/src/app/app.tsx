@@ -1,5 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useEffect } from 'react';
+
 import '@/app/app.scss';
 
 export function App() {
@@ -14,7 +14,8 @@ export function App() {
       console.log(data);
     });
   }, []);
-  return <div>Hello world!</div>;
+
+  return <div className="class">Hello world!</div>;
 }
 
 export default App;
