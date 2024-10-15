@@ -15,7 +15,7 @@ export function App() {
     });
   }, []);
 
-  return <div className="class">Hello world!</div>;
+  return <h1 className="class">Hello world!</h1>;
 }
 
 export default App;
