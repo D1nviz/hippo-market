@@ -1,0 +1,56 @@
+@import "variables";
+
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin breakpoint($size) {
+  @media (min-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+@mixin text-truncate($line-clamp: 1) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line-clamp;
+  -webkit-box-orient: vertical;
+}
+
+@mixin transition($transitions...) {
+  $result: ();
+  $default-speed: "fast";
+  $default-timing-function: ease;
+
+  @each $transition in $transitions {
+    $property: nth($transition, 1);
+    $speed: if(length($transition) > 1, nth($transition, 2), $default-speed);
+    $timing-function: if(
+      length($transition) > 2,
+      nth($transition, 3),
+      $default-timing-function
+    );
+    $duration-value: map-get($duration, $speed);
+
+    $result: append($result, $property $duration-value $timing-function, comma);
+  }
+
+  transition: $result;
+}
+
+@mixin layer($variant) {
+  z-index: map-get($layers, $variant);
+}
+
+@mixin line-clamp($lines: 1) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+}

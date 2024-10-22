@@ -1,0 +1,82 @@
+{
+  "root": true,
+  "ignorePatterns": ["node_modules/", "dist/", "build/"],
+  "plugins": ["@nx", "react", "simple-import-sort", "unused-imports"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ],
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+          "error",
+          {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        "max-lines": [
+          "error",
+          {
+            "max": 1000,
+            "skipBlankLines": true,
+            "skipComments": true
+          }
+        ],
+        "curly": "error",
+        "eqeqeq": ["error", "always"],
+        "no-eval": "error",
+        "no-implied-eval": "error",
+        "prefer-const": [
+          "error",
+          {
+            "destructuring": "all"
+          }
+        ],
+        "no-var": "error",
+        "react/no-array-index-key": "error",
+        "react/self-closing-comp": "error",
+        "complexity": [
+          "error",
+          {
+            "max": 15
+          }
+        ],
+        "max-depth": ["error", 4],
+        "no-console": "warn",
+        "no-alert": "error"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    }
+  ]
+}

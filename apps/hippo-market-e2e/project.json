@@ -1,0 +1,10 @@
+{
+  "name": "hippo-market-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/hippo-market-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["hippo-market"],
+  "// targets": "to see all targets run: nx show project hippo-market-e2e --web",
+  "targets": {}
+}
