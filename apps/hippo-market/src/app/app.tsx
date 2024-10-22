@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-
 import '@/app/app.scss';
+
+import { useEffect } from 'react';
 
 export function App() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -13,7 +13,7 @@ export function App() {
     getData().then((data) => {
       console.log(data);
     });
-  }, []);
+  }, [apiUrl]);
 
   return <h1 className="class">Hello world!</h1>;
 }
