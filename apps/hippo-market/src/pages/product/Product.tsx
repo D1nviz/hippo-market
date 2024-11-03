@@ -7,6 +7,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Button } from '@/components/button/Button';
 import ProductReel, { mockProducts } from '@/features/product-reel/ProductReel';
 import MaxWidthWrapper from '@/layouts/max-width-wrapper/MaxWidthWrapper';
+import { useCart } from '@/store/cart';
 import { formatPrice } from '@/utils/utils';
 
 const breadCrumbs = [
@@ -16,9 +17,10 @@ const breadCrumbs = [
 
 const Page = () => {
   const { productId } = useParams();
-
+  const { addItem, items } = useCart();
   const product = mockProducts.find((product) => product.id === productId);
 
+  const isAlreadyInCart = items.some((item) => item.product.id === productId);
   if (!product) {
     return <MaxWidthWrapper>Product not found</MaxWidthWrapper>;
   }
@@ -64,7 +66,13 @@ const Page = () => {
             <IoMdCheckmark color="#22C55E" size={24} />
             Eligible for instant delivery
           </span>
-          <Button className="product-page__product-button">Add to cart</Button>
+          <Button
+            className="product-page__product-button"
+            onClick={() => addItem(product)}
+            disabled={isAlreadyInCart}
+          >
+            {isAlreadyInCart ? 'Added to cart' : 'Add to cart'}
+          </Button>
           <p className="product-page__product-return">
             <IoShieldOutline />
             30 Day Return Guarantee

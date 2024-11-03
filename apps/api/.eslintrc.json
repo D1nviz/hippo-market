@@ -1,7 +1,18 @@
 {
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "rules": {
-    "no-console": "warn",
-    "react/prop-types": "off"
-  }
+  "extends": ["../.eslintrc.json"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
+    }
+  ]
 }

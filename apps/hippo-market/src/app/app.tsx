@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -10,18 +11,22 @@ import SignInPage from '@/pages/sign-in/SignIn';
 import SignUpPage from '@/pages/sign-up/SignUp';
 
 const App: React.FC = () => {
+  const queryClient = new QueryClient();
+
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="sign-in" element={<SignInPage />} />
-        <Route path="sign-up" element={<SignUpPage />} />
-        <Route path="products/:productId" element={<ProductPage />} />
-        <Route path="cart" element={<CartPage />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="sign-in" element={<SignInPage />} />
+          <Route path="sign-up" element={<SignUpPage />} />
+          <Route path="products/:productId" element={<ProductPage />} />
+          <Route path="cart" element={<CartPage />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </QueryClientProvider>
   );
 };
 

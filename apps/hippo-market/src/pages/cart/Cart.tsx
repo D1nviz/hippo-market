@@ -73,7 +73,7 @@ export default function CartPage() {
                 Order Total
               </div>
               <div className="cart-page__order-summary-row-total">
-                {formatPrice(totalPrice + fee)}{' '}
+                {formatPrice(totalPrice + fee)}
               </div>
             </div>
           </div>

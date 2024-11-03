@@ -60,7 +60,7 @@ and for designers. PNG, SVG, EPS, PSD and CSS formats.`,
 export const useCart = create<CartState>()(
   persist(
     (set) => ({
-      items: mockProducts.map((product) => ({ product })),
+      items: [],
       addItem: (product) =>
         set((state) => {
           return { items: [...state.items, { product }] };

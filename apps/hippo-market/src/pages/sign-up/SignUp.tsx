@@ -1,6 +1,8 @@
 import './styles.scss';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import classNames from 'classnames';
+import { useForm } from 'react-hook-form';
 import { FaArrowRight } from 'react-icons/fa6';
 import { LuLoader2 } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
@@ -9,14 +11,28 @@ import { Button } from '@/components/button/Button';
 import { Input } from '@/components/input/Input';
 import Label from '@/components/label/Label';
 import Logo from '@/components/logo/Logo';
+import { useSignUp } from '@/hooks/useSignUp';
+import {
+  AuthCredentialsValiador,
+  TAuthCredentialsValiador,
+} from '@/utils/validators/account-credentials-validator';
 
 export default function SignUpage() {
-  const errors = {
-    email: { message: '' },
-    password: { message: '' },
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TAuthCredentialsValiador>({
+    resolver: zodResolver(AuthCredentialsValiador),
+  });
+  const { mutate: signUp, error, isPending } = useSignUp();
 
-  const isLoading = false;
+  const onSubmit = ({ email, password }: TAuthCredentialsValiador) => {
+    signUp({
+      email,
+      password,
+    });
+  };
 
   return (
     <div className="sign-up__container">
@@ -32,13 +48,14 @@ export default function SignUpage() {
           </Link>
         </div>
         <div className="sign-up__form">
-          <form onSubmit={() => console.log('submit')}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="sign-up__form-group">
               <div className="sign-up__form-group">
                 <Label htmlFor="email" className="sign-up__form-group-label">
                   Email
                 </Label>
                 <Input
+                  {...register('email')}
                   className={classNames('sign-up__form-group-upput', {
                     'sign-up__form-group-upput--error': errors.email,
                   })}
@@ -55,6 +72,7 @@ export default function SignUpage() {
                   Password
                 </Label>
                 <Input
+                  {...register('password')}
                   type="password"
                   className={classNames('sign-up__form-group-upput', {
                     'sign-up__form-group-upput--error': errors.password,
@@ -67,8 +85,8 @@ export default function SignUpage() {
                   </p>
                 )}
               </div>
-              <Button type="submit" disabled={isLoading}>
-                {isLoading && <LuLoader2 className="loader" />}
+              <Button type="submit" disabled={isPending}>
+                {isPending && <LuLoader2 className="loader" />}
                 Sign up
               </Button>
             </div>
