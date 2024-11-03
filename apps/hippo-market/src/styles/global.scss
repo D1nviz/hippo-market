@@ -4,7 +4,7 @@
 @import 'base/root';
 
 body {
-  font-family: $body-font-family;
+  font-family: 'Inter', sans-serif !important;
   font-size: $body-font-size;
   font-weight: $body-font-weight;
   box-sizing: border-box;

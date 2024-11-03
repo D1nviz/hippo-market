@@ -1,0 +1,96 @@
+.product-page {
+  &__content {
+    padding-inline: 32px;
+    margin-top: 96px;
+    display: flex;
+    gap: 50px;
+  }
+
+  &__product {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    padding-bottom: 32px;
+
+    &-img {
+      height: 512px;
+      width: 512px;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+    &-title {
+      font-size: 40px;
+      font-weight: 700;
+      color: $gray-900;
+    }
+    &-details {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      color: $gray-300;
+    }
+    &-category {
+      font-size: 16px;
+      color: $gray-500;
+    }
+    &-price {
+      font-size: 16px;
+      color: $gray-700;
+    }
+    &-button {
+      width: 100%;
+      margin-top: auto;
+    }
+    &-description {
+      font-size: 16px;
+      color: $zinc-600;
+    }
+    &-guarantee {
+      color: $zinc-500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    &-return {
+      margin-top: 8px;
+      color: $zinc-500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 14px;
+    }
+  }
+
+  &__breadcrumbs {
+    color: $zinc-500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+
+      &-link {
+        font-weight: 500;
+        color: $gray-500;
+        text-decoration: none;
+
+        &:hover {
+          color: $gray-900;
+        }
+      }
+
+      &-separator {
+        margin-left: 8px;
+        color: $gray-300;
+      }
+    }
+  }
+}

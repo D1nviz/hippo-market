@@ -1,0 +1,96 @@
+.button {
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.4s;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  &:focus-visible {
+    outline: 2px solid var(--ring-color);
+    outline-offset: 2px;
+  }
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &--default {
+    background-color: $orange-500;
+    color: $white;
+    &:hover {
+      background-color: rgba($orange-500, 0.9);
+    }
+  }
+
+  &--destructive {
+    background-color: var(--destructive-color);
+    color: var(--destructive-foreground-color);
+    &:hover {
+      background-color: var(--destructive-color-hover);
+    }
+  }
+
+  &--outline {
+    border: 1px solid $gray-300;
+    background-color: $white;
+    color: $gray-900;
+    &:hover {
+      background-color: $white;
+      border-color: $gray-400;
+    }
+  }
+
+  &--secondary {
+    background-color: var(--secondary-color);
+    color: var(--secondary-foreground-color);
+    &:hover {
+      background-color: var(--secondary-color-hover);
+    }
+  }
+
+  &--ghost {
+    &:hover {
+      background-color: var(--accent-color);
+      color: var(--accent-foreground-color);
+    }
+  }
+
+  &--link {
+    background-color: $white;
+    color: $orange-500;
+    font-weight: 500;
+    &:hover {
+      background-color: $white;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+  }
+
+  &--default {
+    height: 40px;
+    padding: 8px 16px;
+  }
+
+  &--sm {
+    height: 36px;
+    border-radius: 4px;
+    padding: 0 12px;
+  }
+
+  &--lg {
+    height: 44px;
+    border-radius: 4px;
+    padding: 0 32px;
+  }
+
+  &--icon {
+    height: 40px;
+    width: 40px;
+  }
+}
