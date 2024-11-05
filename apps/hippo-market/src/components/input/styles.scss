@@ -1,0 +1,32 @@
+.input {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid $zinc-400;
+  background-color: $white;
+  padding: 8px 12px;
+  font-size: 14px;
+  outline-offset: 2px;
+
+  &::file-selector-button {
+    border: 0;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &::placeholder {
+    color: $zinc-400;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px $white, 0 0 0 4px $orange-500;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,142 @@
+.cart-page {
+  &__title {
+    font-size: 32px;
+    font-weight: bold;
+    color: $gray-900;
+    margin-top: 64px;
+    margin-bottom: 48px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 40px;
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-bottom: 1px solid $gray-200;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-top: 1px solid $gray-200;
+  }
+  &__item-remove {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+  }
+
+  &__item-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  &__item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item-guarantee {
+    color: $zinc-600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+  }
+
+  &__item-title {
+    font-size: 14px;
+    color: $gray-900;
+  }
+
+  &__item-category {
+    font-size: 14px;
+    color: $gray-500;
+  }
+
+  &__item-price {
+    font-size: 14px;
+    color: $gray-900;
+  }
+
+  &__order-summary {
+    margin-top: 64px;
+    padding: 24px;
+    background-color: $gray-50;
+    border-radius: 8px;
+    height: fit-content;
+    width: 500px;
+
+    @media (min-width: 640px) {
+      padding: 24px;
+    }
+
+    @media (min-width: 1024px) {
+      grid-column: span 5;
+      margin-top: 0;
+      padding: 32px;
+    }
+
+    &-title {
+      font-size: 18px;
+      color: $gray-900;
+    }
+
+    &-details {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &-label {
+        font-size: 14px;
+        color: $gray-600;
+      }
+
+      &-value {
+        font-size: 14px;
+        color: $gray-900;
+      }
+
+      &-total {
+        font-size: 16px;
+        color: $gray-900;
+      }
+
+      &-fee {
+        border-top: 1px solid $gray-200;
+        padding-top: 16px;
+      }
+    }
+
+    &-button {
+      margin-top: 24px;
+      width: 100%;
+
+      &-loading {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+        animation: spin 1s linear infinite;
+      }
+    }
+  }
+}

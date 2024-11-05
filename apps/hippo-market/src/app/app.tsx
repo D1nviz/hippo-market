@@ -1,21 +1,33 @@
-import '@/app/app.scss';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import { useEffect } from 'react';
+import Footer from '@/layouts/footer/Footer';
+import Header from '@/layouts/header/Header';
+import CartPage from '@/pages/cart/Cart';
+import Home from '@/pages/home/Home';
+import ProductPage from '@/pages/product/Product';
+import SignInPage from '@/pages/sign-in/SignIn';
+import SignUpPage from '@/pages/sign-up/SignUp';
 
-export function App() {
-  const apiUrl = import.meta.env.VITE_API_URL;
+const App: React.FC = () => {
+  const queryClient = new QueryClient();
 
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch(`${apiUrl}`);
-      return response.json();
-    };
-    getData().then((data) => {
-      console.log(data);
-    });
-  }, [apiUrl]);
-
-  return <h1 className="class">Hello world!</h1>;
-}
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="sign-in" element={<SignInPage />} />
+          <Route path="sign-up" element={<SignUpPage />} />
+          <Route path="products/:productId" element={<ProductPage />} />
+          <Route path="cart" element={<CartPage />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
